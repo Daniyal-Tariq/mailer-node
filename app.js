@@ -24,11 +24,11 @@ app.get("/", (req, res) => {
 app.post("/api/v2", async (req, res) => {
   console.log("/api/v2 begins");
   const data = req.body;
-
+console.log(data)
   const auth = {
     auth: {
-      api_key: "",
-      domain: "",
+      api_key: "3d99f2f94cb6b454765099cef93e203e-0afbfc6c-86264dc4",
+      domain: "https://api.mailgun.net/v3/sandbox04c23f87e0cc4074bfc7490281bf266b.mailgun.org"
     },
   };
 
@@ -36,7 +36,7 @@ app.post("/api/v2", async (req, res) => {
 
   const mailOptions = {
     from: data.email,
-    to: "maansaridot@gmail.com",
+    to: "dronzerdroid@gmail.com",
     subject: "Test email - Subject",
     text: "I would like to get in touch with you!",
     html: `
@@ -62,12 +62,13 @@ app.post("/api/v2", async (req, res) => {
 });
 
 app.post("/api/v1", async (req, res) => {
+    console.log("/api/v1 begins")
   var data = req.body;
 
   //   create reusable transporter object using the default SMTP transport
   let smtpTransport = nodemailer.createTransport({
-    name: "www.bytescave.com",
-    host: "mail.bytescave.com",
+    // name: "www.bytescave.com",
+    host: "mail.privateemail.com",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
@@ -90,7 +91,7 @@ app.post("/api/v1", async (req, res) => {
   });
 
   var mailOptions = {
-    from: data.email,
+    from: "contact@bytescave.com",
     to: "contact@bytescave.com",
     subject: "Test Subject",
     text: "Hello world?",
